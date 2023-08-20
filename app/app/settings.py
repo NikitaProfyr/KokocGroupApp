@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +29,12 @@ SECRET_KEY = "django-insecure-l9tlv6wpjw&wlt8!=+^)-=xfo@lm_+*$x+n9p(kfl-+ko&!n@4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "0.0.0.0",
+]
+INTERNAL_IPS = ["127.0.0.1", "0.0.0.0"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,11 +44,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "rest_framework",
     "django_filters",
-
-    "exchange_app"
+    "exchange_app",
 ]
 
 MIDDLEWARE = [
@@ -87,10 +92,10 @@ WSGI_APPLICATION = "app.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "KokocGroupDB",
-        "USER": "dies_admin",
-        "PASSWORD": "123123",
-        "HOST": "localhost",
+        "NAME": getenv("POSTGRES_DB"),
+        "USER": getenv("POSTGRES_USER"),
+        "PASSWORD": getenv("POSTGRES_PASSWORD"),
+        "HOST": "db",
         "PORT": "5432",
     }
 }
@@ -128,9 +133,9 @@ USE_TZ = True
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
-    "DEFAULT_FILTER_BACKENDS" : [
+    "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
-    ]
+    ],
 }
 
 # Static files (CSS, JavaScript, Images)

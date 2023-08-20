@@ -7,6 +7,3 @@ def get_dates(model: Model, **filters):
 
 def get_data(model: Model, **filters):
     return model.objects.get(**filters)
-
-
-
