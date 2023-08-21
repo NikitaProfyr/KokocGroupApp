@@ -4,10 +4,20 @@
 
 - В директории проекта создайте файл .env и скопируйте туда данные из файла .env.templates 
 - Откройте терминал и перейдите в директорию с проектом. Затем пропишите команды 
-  - docker build . -t app
+  - docker build . -t app # Собрать контейнер
+  - docker-compose run app bash # Позволяет использовать командную строку внутри контейнера
+  - python manage.py migrate # Применить миграции 
+  - python manage.py createsuperuser # Создайте администратора с нужными для вас данными
+  - python manage.py get_data # получить данные с сайта https://www.cbr-xml-daily.ru/daily_json.js
+  - exit # Выйти из командной строки внутри контейнера
+  - docker compose up app # запустить проект
+  
+## При повторном использовании, чтобы запустить проект нужно в терминале прописать команду:
+docker compose up app
+
+## Чтобы повторно получить данные с сайта проделайте следующие шаги:
+- Откройте терминал и перейдите в директорию с проектом. Затем пропишите команды 
   - docker-compose run app bash
-  - python manage.py migrate
-  - python manage.py createsuperuser
   - python manage.py get_data
   - exit
-  - docker compose up app
+  
