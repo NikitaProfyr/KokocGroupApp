@@ -96,6 +96,7 @@ DATABASES = {
         "USER": getenv("POSTGRES_USER"),
         "PASSWORD": getenv("POSTGRES_PASSWORD"),
         "HOST": "db",
+        # "HOST": "KokocGroupDB",
         "PORT": "5432",
     }
 }

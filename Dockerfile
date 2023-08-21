@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 
 COPY app .
 
-CMD["python","manage.py","createsuperuser"]
+#CMD["python","manage.py","createsuperuser"]

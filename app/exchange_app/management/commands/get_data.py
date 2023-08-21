@@ -23,6 +23,6 @@ class Command(BaseCommand):
                     Currency=сurrency
                 )
                 exchange_rate.save()
-                self.stdout.write("данные успешно внесены в базу")
+                self.stdout.write(f"данные о {value['CharCode']} успешно внесены в базу")
             else:
                 self.stdout.write("ошибка валидации")
